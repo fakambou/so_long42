@@ -6,7 +6,7 @@
 /*   By: fakambou <fakambou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 21:16:44 by fakambou          #+#    #+#             */
-/*   Updated: 2024/12/31 15:44:19 by fakambou         ###   ########.fr       */
+/*   Updated: 2025/01/03 16:39:19 by fakambou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ void	load_map(t_map *map, char *filename)
 	if (!map->map)
 		return ;
 	map->map[0] = get_next_line(fd);
+	if (!map->map[0])
+		ft_error("Error:\nThe map does not exist", map);
 	i = 0;
 	while (++i < map->column)
 	{

@@ -14,16 +14,18 @@
 
 void	copy_map(t_map *map)
 {
-	int	x;
+	int	i;
 
 	map->cpymap = malloc(sizeof(char *) * (map->column + 1));
-	x = 0;
-	while (x < map->column)
+	if (!map->cpymap)
+		return ;
+	i = 0;
+	while (i < map->column)
 	{
-		map->cpymap[x] = ft_strdup(map->map[x]);
-		x++;
+		map->cpymap[i] = ft_strdup(map->map[i]);
+		i++;
 	}
-	map->cpymap[x] = NULL;
+	map->cpymap[i] = NULL;
 }
 
 void	flood_fill(char **map, int x, int y, t_map *m)
@@ -94,7 +96,7 @@ void	print_map(char **map)
 	x = 0;
 	while (map[x])
 	{
-		printf("%s", map[x]);
+		ft_printf("%s", map[x]);
 		x++;
 	}
 }
