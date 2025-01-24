@@ -79,8 +79,9 @@ void	check_cpymap(t_map *map)
 				ft_error("Error:\nSome collectable cannot be recovered\n", map);
 			if (map->cpymap[y][x] == 'E')
 			{
-				if (map->cpymap[y + 1][x] != 'F' && map->cpymap[y - 1][x] != 'F' \
-						&& map->cpymap[y][x + 1] != 'F' && map->cpymap[y][x - 1] != 'F')
+				if (map->cpymap[y + 1][x] != 'F' && map->cpymap[y - 1][x] != 'F'
+					&& map->cpymap[y][x + 1] != 'F'
+						&& map->cpymap[y][x - 1] != 'F')
 					ft_error("Error:\nThe exit is not reachable", map);
 			}
 			x++;
@@ -89,14 +90,3 @@ void	check_cpymap(t_map *map)
 	}
 }
 
-void	print_map(char **map)
-{
-	int	x;
-
-	x = 0;
-	while (map[x])
-	{
-		ft_printf("%s", map[x]);
-		x++;
-	}
-}

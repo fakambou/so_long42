@@ -1,8 +1,8 @@
-SRCS = $ main.c map.c check_map.c flood_fill.c mlx.c
+SRCS = $ main.c map.c check_map.c flood_fill.c mlx.c fin.c
 OBJS = ${SRCS:.c=.o}
 NAME = so_long
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g3
 MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit
 RM = rm -rf
 INCLUDES = -I/usr/include -Imlx -Iincludes

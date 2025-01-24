@@ -6,7 +6,7 @@
 /*   By: fakambou <fakambou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 19:15:57 by fakambou          #+#    #+#             */
-/*   Updated: 2025/01/06 19:27:42 by fakambou         ###   ########.fr       */
+/*   Updated: 2025/01/24 20:20:17 by fakambou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,14 @@
 # include <stdio.h>
 # include <stdbool.h>
 # include <mlx.h>
+# include <X11/X.h>
+# include <X11/keysym.h>
 
 # define ESC_KEY 65307
+# define W_KEY 119
+# define A_KEY 97
+# define S_KEY 115
+# define D_KEY 100
 
 typedef struct s_map
 {
@@ -36,6 +42,7 @@ typedef struct s_map
 	char	**cpymap;
 	int		new_x;
 	int		new_y;
+	int		collectibles;
 }	t_map;
 
 typedef struct s_game
@@ -50,7 +57,9 @@ typedef struct s_game
 	void	*player;
 	void	*wall;
 	void	*exit;
-	//t_map	*map;
+	int		old_y;
+	int		old_x;
+	t_map	m;
 }t_game;
 
 void	load_map(t_map *map, char *filename);
@@ -68,12 +77,12 @@ void	copy_map(t_map *map);
 void	flood_fill(char **map, int x, int y, t_map *m);
 void	find_player(t_map *map);
 void	check_cpymap(t_map *map);
-void	print_map(char **map);
 void	init_map(t_game *game, char **map);
 int		close_window(t_game *game);
 int		handle_keypress(int keycode, t_game *game);
-int		handle_resize(t_game *game);
 void	load_textures(t_game *game);
 void	draw_map(t_game *game, t_map *map);
+void	elyeshattab(t_game *game);
+void	exit_game(t_game *game);
 
 #endif

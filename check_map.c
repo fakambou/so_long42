@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ihhadjal <ihhadjal@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: fakambou <fakambou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 19:04:45 by fakambou          #+#    #+#             */
-/*   Updated: 2025/01/02 17:55:57 by ihhadjal         ###   ########.fr       */
+/*   Updated: 2025/01/24 19:12:26 by fakambou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,31 +63,32 @@ void	check_wall(t_map *map)
 	}
 }
 
-void	check_map(t_map *map)
+void	check_map(t_map *m)
 {
 	int	x;
 	int	y;
 
 	x = -1;
-	while (map->map[++x])
+	while (m->map[++x])
 	{
 		y = -1;
-		while (map->map[x][++y]){
-			if (map->map[x][y] == 'C')
-				map->item++;
-			else if (map->map[x][y] == 'E')
-				map->exit++;
-			else if (map->map[x][y] == 'P')
-				map->start++;
-			else if (map->map[x][y] != '1' && map->map[x][y] != '0' \
-				&& map->map[x][y] != '\n')
-				ft_error("Error:\nPut only valid characters", map);
+		while (m->map[x][++y])
+		{
+			if (m->map[x][y] == 'C')
+				m->item++;
+			else if (m->map[x][y] == 'E')
+				m->exit++;
+			else if (m->map[x][y] == 'P')
+				m->start++;
+			else if (m->map[x][y] != '1' && m->map[x][y] != '0'
+				&& m->map[x][y] != '\n')
+				ft_error("Error:\nPut only valid characters", m);
 		}
 	}
-	if (map->item < 1)
-		ft_error("Error:\nPut at least one collectable", map);
-	if (map->exit != 1)
-		ft_error("Error:\nPut just one exit", map);
-	if (map->start != 1)
-		ft_error("Error:\nSet only one starting position", map);
+	if (m->item < 1)
+		ft_error("Error:\nPut at least one collectable", m);
+	if (m->exit != 1 || m->start != 1)
+		ft_error("Error:\nPut just one exit, or check starting position", m);
+	//if (m->start != 1)
+		//ft_error("Error:\nSet only one starting position", m);
 }
